@@ -112,7 +112,7 @@ def preprocess():
 
             global new_model
             new_model = BalancedRandomForestClassifier(max_depth=None, min_samples_leaf=1,
-                                                       min_samples_split=5, n_estimators=500, n_jobs=-1,
+                                                       min_samples_split=5, n_estimators=100, n_jobs=-1,
                                                        random_state=42)
             new_model.fit(X_train, y_train)
             logging.info("New model trained successfully.")
@@ -153,5 +153,8 @@ def data_transformations_feature_removal(data, features_to_remove):
         logging.error(f"Error during data transformation and feature removal: {e}")
         raise
 
+# New addition: Get port from environment variable
+port = int(os.environ.get("PORT", 10000))
+
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=port)
