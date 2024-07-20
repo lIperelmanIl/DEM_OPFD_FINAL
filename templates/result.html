@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Fraud Detection Results</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="static/styles.css">
+</head>
+<body>
+    <div class="container-fluid bg-dark text-white min-vh-100 d-flex align-items-center justify-content-center">
+        <div class="card bg-dark text-white shadow-lg" style="max-width: 500px; width: 100%;">
+            <div class="card-header bg-gradient text-center">
+                <h3 class="card-title">Fraud Detection Results</h3>
+            </div>
+            <div class="card-body">
+                {% if prob_old is not none %}
+                <h3>Initial Model Prediction</h3>
+                <p>Probability: {{ prob_old }}</p>
+                <p>Status: {{ fraud_status_old }}</p>
+                {% endif %}
+
+                {% if prob_new is not none %}
+                <h3>New Model Prediction</h3>
+                <p>Probability: {{ prob_new }}</p>
+                <p>Status: {{ fraud_status_new }}</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
