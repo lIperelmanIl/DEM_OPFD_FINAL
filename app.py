@@ -75,13 +75,13 @@ def predict():
         prob_old, fraud_status_old = None, "Model not loaded"
         if initial_model:
             prob_old = initial_model.predict_proba(X)[:, 1][0]
-            fraud_status_old = "Fraud" if prob_old >= 0.5 else "Not Fraud"
+            fraud_status_old = "Fraud" if prob_old >= 0.65 else "Not Fraud"
             logging.info(f"Prediction with initial model: {prob_old}")
 
         prob_new, fraud_status_new = None, None
         if new_model:
             prob_new = new_model.predict_proba(X)[:, 1][0]
-            fraud_status_new = "Fraud" if prob_new >= 0.5 else "Not Fraud"
+            fraud_status_new = "Fraud" if prob_new >= 0.65 else "Not Fraud"
             logging.info(f"Prediction with new model: {prob_new}")
 
         return render_template('result.html', prob_old=prob_old, prob_new=prob_new, fraud_status_old=fraud_status_old, fraud_status_new=fraud_status_new)
